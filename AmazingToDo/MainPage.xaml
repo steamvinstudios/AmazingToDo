@@ -19,9 +19,15 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Book">
                     <ListViewItem>
-                        <StackPanel Margin="0 8" Spacing="8">
+                        <StackPanel Margin="0 8" Spacing="8" BorderBrush="OrangeRed" CornerRadius="8" BorderThickness="1" Padding="20 40">
                             <TextBlock Text="{Binding Name}" FontSize="32" FontFamily="Bahnschrift" FontWeight="Light" FontStretch="ExtraCondensed"/>
-                            <ProgressBar Value="{Binding Progress}"/>
+                            <ProgressBar x:Name="BookProgress" Value="{Binding Progress}"/>
+                            <Border BorderBrush="Yellow" BorderThickness="1">
+                                <TextBlock HorizontalAlignment="Center" Foreground="Yellow">
+                                <Run Text="Прогресс:"/>
+                                <Run Text="{Binding ElementName=BookProgress, Path=Value}"/><Run Text="%"/>
+                                </TextBlock>
+                            </Border>
                             <Border BorderBrush="OliveDrab" BorderThickness="1" CornerRadius="16" Padding="4">
                                 <TextBlock HorizontalAlignment="Center" Foreground="GreenYellow" FontWeight="Light" FontStretch="ExtraCondensed">
                                     <Run Text="Pages:"/>
