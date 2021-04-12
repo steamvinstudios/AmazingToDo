@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="AmazingToDo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AmazingToDo"
+    xmlns:vm="using:ViewModels"
+    xmlns:models="using:Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:Books/>
+    </Page.DataContext>
+
+    <Grid>
+        <ListView ItemsSource="{Binding AppBooks}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Book">
+                    <ListViewItem>
+                        <StackPanel Margin="0 8" Spacing="8">
+                            <TextBlock Text="{Binding Name}" FontSize="32" FontFamily="Bahnschrift" FontWeight="Light" FontStretch="ExtraCondensed"/>
+                            <ProgressBar Value="{Binding Progress}"/>
+                            <Border BorderBrush="OliveDrab" BorderThickness="1" CornerRadius="16" Padding="4">
+                                <TextBlock HorizontalAlignment="Center" Foreground="GreenYellow" FontWeight="Light" FontStretch="ExtraCondensed">
+                                    <Run Text="Pages:"/>
+                                    <Run Text="{Binding Pages}"/>
+                                </TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </ListViewItem>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
